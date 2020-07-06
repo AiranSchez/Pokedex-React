@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Content.scss';
+import './Body.scss';
 import {SearchBar} from '../SearchBar';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
@@ -21,7 +21,7 @@ const initialState:PokemonItems = {
     stats: [],
 };
 
-export const Content: React.FC<{}> = () => {
+export const Body: React.FC<{}> = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [pokemons, setPokemons] = useState<PokemonItems>(initialState);
 
@@ -51,10 +51,10 @@ export const Content: React.FC<{}> = () => {
             <SearchBar searchTerm={searchTerm} onInputChange={onInputChange}
                        onClick={(event: React.FormEvent<Element>) => handleClick(event)}/>
             {pokemons.name !== '' &&
-                <ContentDetail pokemon={pokemons}/>
+            <ContentDetail pokemon={pokemons}/>
             }
         </div>
     );
 };
 
-Content.displayName = 'Content';
+Body.displayName = 'Body';

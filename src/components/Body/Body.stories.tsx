@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Content} from './Content';
+import {Body} from './Body';
 import { withA11y } from '@storybook/addon-a11y';
 
 export default {
@@ -7,4 +7,4 @@ export default {
   decorators: [withA11y],
 };
 
-export const withText = () => <Content />;
+export const withText = () => <Body />;

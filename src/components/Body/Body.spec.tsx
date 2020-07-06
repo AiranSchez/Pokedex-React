@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { Content} from './';
+import { Body} from './';
 
 describe('Content', () => {
   it('should display the default message', () => {
     const renderResult: RenderResult = render(
-      <Content/>,
+      <Body/>,
     );
-    expect(renderResult.queryByText('Hello from Content!')).toBeTruthy();
+    expect(renderResult.queryByText('Hello from Body!')).toBeTruthy();
   });
 });

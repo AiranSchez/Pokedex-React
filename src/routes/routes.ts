@@ -5,5 +5,5 @@ type typeRoute = {
 
 export const ROUTE: typeRoute = {
     Home: '/',
-    PokemonDetails: '/PokemonDetails'
+    PokemonDetails: '/PokemonDetails/:Poke'
 };

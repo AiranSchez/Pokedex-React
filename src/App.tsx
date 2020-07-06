@@ -15,7 +15,7 @@ const App: React.FC = () => {
     <div className="App">
         <Header/>
         <Router>
-            <Route exact path={ROUTE.Home} component={Home}/>
+            <Route exact path={ROUTE.Home} component={Home} />
             <Route exact path={ROUTE.PokemonDetails} component={PokemonDetails}/>
         </Router>
         <Footer/>

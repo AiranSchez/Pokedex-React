@@ -40,7 +40,6 @@ export const Body: React.FC<{}> = () => {
             console.log(error);
         }
     }
-
     const handleClick = (e: React.FormEvent) => {
         e.preventDefault();
         apiCall();
@@ -51,7 +50,7 @@ export const Body: React.FC<{}> = () => {
             <SearchBar searchTerm={searchTerm} onInputChange={onInputChange}
                        onClick={(event: React.FormEvent<Element>) => handleClick(event)}/>
             {pokemons.name !== '' &&
-            <ContentDetail pokemon={pokemons}/>
+                <ContentDetail pokemon={pokemons}/>
             }
         </div>
     );

@@ -1,15 +1,16 @@
 import * as React from 'react';
 import './SearchBar.scss';
-import {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 interface SearchBarProps {
     searchTerm: string;
     onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
     onClick?: any;
+    // pokemontypes: any;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({searchTerm, onInputChange, onClick}) => {
-    return(
+export const SearchBar: React.FC<SearchBarProps> = ({searchTerm, onInputChange, onClick, /*pokemonTypes*/}) => {
+    return (
         <div className="SearchBar">
             <form>
                 <span>Search for Pokemons</span>
@@ -20,12 +21,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({searchTerm, onInputChange, 
                     onChange={onInputChange}
                     required
                 />
-                <button type="submit" onClick={onClick}>Search</button>
+                <Link to="/PokemonDetails">
+                    <button type="submit" onClick={onClick}>Search</button>
+                </Link>
             </form>
         </div>
     );
 };
-
-
 
 SearchBar.displayName = 'SearchBar';

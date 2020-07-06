@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './Header.scss';
-import logo from '../../logo.svg';
 
 export const Header: React.FC<{}> = () => (
   <div className="Header">

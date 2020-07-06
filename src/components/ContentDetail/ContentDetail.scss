@@ -1,0 +1,20 @@
+.ContentDetail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 100px;
+  }
+
+  .PokemonInfo{
+    background: aqua;
+    display: flex;
+    flex-direction: column;
+
+
+    .PokemonStats{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.Header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  color: white;
+  margin-left:10%;
+  margin-right:10%;
+  margin-top: 2%;
+  height: 70px;
+
+  .Navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .NavbarLink{
+      padding: 20px;
+    }
+  }
+}

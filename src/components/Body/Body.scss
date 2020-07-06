@@ -1,3 +1,43 @@
 .Content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // Provisional
+    margin-top: 40px;
+    button{
+      font-size:2em;
+      font-weight: bold;
+      background-color: #f42;
+      color: white;
+      border-radius: 15px;
+      margin-left: 30%;
+      margin-right: 30%;
+      height: 100px;
+      width: 400px;
+    }
+  }
 
+  .SearchBar{
+    form{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      width: 400px;
+      span {
+        font-size:2em;
+      }
+      input{
+        margin-top: 40px;
+        height: 3em;
+        width: 100%;
+      }
+    }
+  }
 }

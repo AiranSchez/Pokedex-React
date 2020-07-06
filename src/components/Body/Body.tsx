@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState} from 'react';
 import './Body.scss';
 import {SearchBar} from '../SearchBar';
-import {Link} from 'react-router-dom';
+
 
 export const Body: React.FC<{}> = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -11,11 +11,7 @@ export const Body: React.FC<{}> = () => {
     };
     return (
         <div className="Content">
-            <SearchBar searchTerm={searchTerm} onInputChange={onInputChange}
-            />
-            <Link to={`/PokemonDetails/${searchTerm}`}>
-                search
-            </Link>
+            <SearchBar searchTerm={searchTerm} onInputChange={onInputChange}/>
         </div>
     );
 };

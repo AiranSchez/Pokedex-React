@@ -7,7 +7,7 @@ interface ContentDetailProps {
 
 export const ContentDetail: React.FC<ContentDetailProps> = ({pokemon}) => (
   <div className="ContentDetail">
-
+      <p>Nombre: {pokemon.name}</p>
       <div>
           {pokemon &&
             <img src={pokemon.sprites.front_default} alt="Hola"/>

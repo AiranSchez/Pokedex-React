@@ -1,14 +1,23 @@
 import React from 'react';
 import './App.css';
 import {Header} from './components/Header';
-import {Body} from './components/Body';
 import {Footer} from './components/Footer';
+import {
+    BrowserRouter as Router,
+    Route,
+} from 'react-router-dom';
+import {Home} from './pages/Home/Home';
+import {PokemonDetails} from './pages/PokemonDetails/PokemonDetails';
+import {ROUTE} from './routes/routes';
 
 const App: React.FC = () => {
   return (
     <div className="App">
         <Header/>
-        <Body/>
+        <Router>
+            <Route exact path={ROUTE.Home} component={Home}/>
+            <Route exact path={ROUTE.PokemonDetails} component={PokemonDetails}/>
+        </Router>
         <Footer/>
     </div>
   );

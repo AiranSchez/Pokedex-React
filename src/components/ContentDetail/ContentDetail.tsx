@@ -13,7 +13,8 @@ export const ContentDetail: React.FC<ContentDetailProps> = ({pokemon}) => (
           }
       </div>
       <div className="PokemonInfo">
-            {pokemon.stats.map( (stat:any) => (
+            {pokemon &&
+                pokemon.stats.map( (stat:any) => (
                 <div className="PokemonStats">
                     <div>{stat.stat.name}</div>
                     <div>{stat.base_stat}</div>

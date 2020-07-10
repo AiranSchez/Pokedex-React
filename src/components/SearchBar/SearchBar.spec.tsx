@@ -1,12 +1,40 @@
 import * as React from 'react';
-import { render, RenderResult } from '@testing-library/react';
-import { SearchBar} from './';
+import { render, fireEvent, RenderResult } from '@testing-library/react';
+import { SearchBar } from './';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('SearchBar', () => {
-  it('should display the default message', () => {
+  it('check if button is rendered', () => {
+    const irrelevantText = 'pikachu';
     const renderResult: RenderResult = render(
-      <SearchBar/>,
+      <BrowserRouter>
+        <SearchBar searchTerm={irrelevantText} />
+      </BrowserRouter>,
     );
-    expect(renderResult.queryByText('Hello from SearchBar!')).toBeTruthy();
+    expect(renderResult.queryByText('Search')).toBeTruthy();
   });
+
+  it('check if input is rendered', () => {
+    const irrelevantText = 'pikachu';
+    const renderResult: RenderResult = render(
+        <BrowserRouter>
+          <SearchBar searchTerm={irrelevantText} />
+        </BrowserRouter>,
+    );
+    expect(renderResult.queryByPlaceholderText('Pikachu, Bulbasaur...')).toBeTruthy();
+  });
+
+  it('check if input can be writted', () => {
+
+    const irrelevantText = 'pikachu';
+    const renderResult = render(
+        <BrowserRouter>
+          <SearchBar searchTerm={irrelevantText} />
+        </BrowserRouter>,
+    );
+    const input = renderResult.getByLabelText('labelInput');
+    fireEvent.change(input, { target: { value: 'a' } });
+    expect(input).toBeTruthy();
+  });
+
 });

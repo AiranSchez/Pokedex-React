@@ -1,7 +1,7 @@
 
 /* Poké Styles */
 .pokeball {
-    z-index: -1000;
+
     position: absolute;
     width: 200px;
     height: 200px;
@@ -11,9 +11,7 @@
     overflow: hidden;
     box-shadow: inset -10px 10px 0 10px #ccc;
     animation: spinning .8s linear  infinite;
-
 }
-
 .pokeball::before,
 .pokeball::after {
     content: "";

@@ -11,13 +11,7 @@ export type Pokemon = {
   }[];
 };
 
-/*
-* {
-base_stat: 35,
-effort: 0,
-stat: {
-name: "hp",
-url: "https://pokeapi.co/api/v2/stat/1/"
-}
-},
-* */
+export type PokemonList = {
+  name: string;
+  url: string
+};

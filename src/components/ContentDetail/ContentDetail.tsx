@@ -3,7 +3,7 @@ import './ContentDetail.scss';
 import { Pokemon } from '../../pages/PokemonDetails/types';
 
 interface ContentDetailProps {
-  pokemon: Pokemon;
+    pokemon: Pokemon;
 }
 
 export const ContentDetail: React.FC<ContentDetailProps> = ({ pokemon }) => {
@@ -17,7 +17,6 @@ export const ContentDetail: React.FC<ContentDetailProps> = ({ pokemon }) => {
         <div className="PokemonInfo">
           {pokemon.stats.map((stat: any) => (
             <div className="PokemonStats">
-              {console.log(pokemon)}
               <div>{stat.stat.name}</div>
               <div>{stat.base_stat}</div>
             </div>

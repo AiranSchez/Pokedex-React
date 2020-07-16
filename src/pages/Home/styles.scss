@@ -2,20 +2,17 @@
   display: grid;
   justify-content: center;
   padding: 20px 0;
-  background-color: grey;
+
 }
 
 @media (min-width: 576px){
   .Home {
-    padding: 0;
-    background-color: aquamarine;
+
   }
 }
 
 @media (min-width: 992px)  {
   .Home {
-    padding: 0;
     background-size: 45%;
-    background-color: aqua;
   }
 }

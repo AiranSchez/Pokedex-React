@@ -1,25 +1,29 @@
 import React from 'react';
 import './styles/styles.scss';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Home } from './pages/Home/Home';
-import { PokemonDetails } from './pages/PokemonDetails/PokemonDetails';
-import { ROUTE } from './routes/routes';
+import {Header} from './components/Header';
+import {Footer} from './components/Footer';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Home} from './pages/Home/Home';
+import {PokemonDetails} from './pages/PokemonDetails/PokemonDetails';
+import {ROUTE} from './routes/routes';
+import {ConstructionPage} from './pages/ConstructionPage/ConstructionPage';
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      <main className={'main'}>
-        <Header />
+    return (
         <Router>
-          <Route exact path={ROUTE.Home} component={Home} />
-          <Route exact path={ROUTE.PokemonDetails} component={PokemonDetails} />
+            <div className="App">
+                <main className={'main'}>
+                    <Header/>
+                    <Switch>
+                        <Route exact path={ROUTE.Home} component={Home}/>
+                        <Route exact path={ROUTE.PokemonDetails} component={PokemonDetails}/>
+                        <Route exact path={ROUTE.ConstructionPage} component={ConstructionPage}/>
+                    </Switch>
+                </main>
+                <Footer/>
+            </div>
         </Router>
-      </main>
-      <Footer />
-    </div>
-  );
+    );
 };
 
 export default App;

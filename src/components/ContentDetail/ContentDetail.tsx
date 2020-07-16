@@ -11,7 +11,7 @@ export const ContentDetail: React.FC<ContentDetailProps> = ({ pokemon }) => {
     <div className="ContentDetail">
       <p>Nombre: {pokemon.name}</p>
       <div>
-        <img src={pokemon.sprites.front_default} alt="Hola" />
+        <img src={pokemon.sprites.front_default} alt="Imagen del pokemon" />
       </div>
       {
         <div className="PokemonInfo">

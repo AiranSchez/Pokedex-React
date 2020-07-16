@@ -7,6 +7,6 @@ describe('Footer', () => {
     const renderResult: RenderResult = render(
       <Footer/>,
     );
-    expect(renderResult.queryByText('Hello from Footer!')).toBeTruthy();
+    expect(renderResult.queryByText(/Database/i)).toBeTruthy();
   });
 });

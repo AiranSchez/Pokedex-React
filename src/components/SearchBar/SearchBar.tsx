@@ -23,22 +23,28 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         <div className="SearchBar">
             <form>
                 <span>Search for Pokemons</span>
-                <input
-                    type="search"
-                    placeholder="Pikachu, Bulbasaur..."
-                    value={searchTerm}
-                    onChange={onInputChange}
-                    required
-                />
-                {searchTerm !== '' ? (
-                        <Link to={`/PokemonDetails/${searchTerm}`}>
-                            <button>Search</button>
-                        </Link>
-                    ) :
-                    <Link to={`/PokemonDetails/${randomNumber}`}>
-                        <button>Search</button>
-                    </Link>
-                }
+                <div>
+                    <input
+                        type="search"
+                        placeholder="Pikachu, Bulbasaur..."
+                        value={searchTerm}
+                        onChange={onInputChange}
+                        required
+                    />
+                    {searchTerm !== '' ? (
+                            <button>
+                                <Link to={`/PokemonDetails/${searchTerm}`}>
+                                    Search
+                                </Link>
+                            </button>
+                        ) :
+                        <button>
+                            <Link to={`/PokemonDetails/${randomNumber}`}>
+                                Search
+                            </Link>
+                        </button>
+                    }
+                </div>
             </form>
         </div>
     );

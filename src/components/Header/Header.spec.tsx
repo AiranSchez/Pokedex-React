@@ -7,6 +7,6 @@ describe('Header', () => {
     const renderResult: RenderResult = render(
       <Header/>,
     );
-    expect(renderResult.queryByText('Hello from Header!')).toBeTruthy();
+    expect(renderResult.queryAllByText(/Pokemon/i)).toBeTruthy();
   });
 });

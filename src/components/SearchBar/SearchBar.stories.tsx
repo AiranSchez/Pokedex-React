@@ -7,4 +7,4 @@ export default {
   decorators: [withA11y],
 };
 
-export const withText = () => <SearchBar searchTerm={'Pikachu'}/>;
+

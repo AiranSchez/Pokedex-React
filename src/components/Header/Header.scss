@@ -1,24 +1,35 @@
-.Header{
+.Header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: black;
+  /*background: #EF5350;*/
   color: white;
   height: 70px;
+  border-bottom: 3px solid darkred;
 
-  .Navbar{
+  .Navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .NavbarLink{
+
+    .NavbarLink {
       padding: 20px;
+
+      a {
+        text-decoration: none;
+        color: white;
+        &:hover{
+          color: black;
+        }
+      }
     }
   }
 }
-@media (min-width: 576px){
+
+@media (min-width: 576px) {
 
 }
 
-@media (min-width: 992px)  {
+@media (min-width: 992px) {
 
 }

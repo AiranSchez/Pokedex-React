@@ -1,84 +1,81 @@
-.Content{
+.Content {
+  min-width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  a{
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // Provisional
-    margin-top: 40px;
-    button{
-      font-size:2em;
-      font-weight: bold;
-      background-color: #f42;
-      color: white;
-      border-radius: 15px;
-      margin-left: 30%;
-      margin-right: 30%;
-      height: 100px;
-      width: 400px;
-    }
-  }
 
-  .SearchBar{
-    form{
+  .SearchBar {
+    form {
       display: flex;
       flex-direction: column;
       text-align: center;
       align-items: center;
-      width: 400px;
-      span {
-        font-size:2em;
+      width: 300px;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        width: 80vw;
+
+        input {
+          height: 3em;
+          width: 100%;
+          margin-right: 2%;
+        }
+
+        button {
+          font-size: 1em;
+          font-weight: bold;
+          background-color: #f42;
+          border-radius: 5px;
+
+          a {
+            color: white;
+            text-decoration: none;
+          }
+        }
       }
-      input{
-        margin-top: 40px;
-        height: 3em;
-        width: 100%;
+
+
+      span {
+        font-size: 2em;
+        margin-bottom: 10%;
+      }
+
+
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .Content {
+    .SearchBar {
+      form {
+        width: 350px;
+
+        div{
+          max-width: 500px;
+        }
+        input {
+          height: 3em;
+          width: 80%;
+        }
       }
     }
   }
-  .PokemonIndexTable {
-    border: 1px solid #FFFFFF;
-    text-align: center;
-    border-collapse: collapse;
+}
 
-    img {
-      width: 100px;
-      height: 100px;
-    }
-    th {
-      padding: 3px 2px;
-    }
-    td {
-      border: 1px solid #FFFFFF;
-      padding: 3px 2px;
+@media (min-width: 992px) {
+  .Content {
+    .SearchBar {
+      form {
+        width: 400px;
 
-      a {
-        height: 100px;
-      }
-    }
-    tr {
-      height: 100px;
-      border: 1px solid black;
-      &:nth-child(even) {
-        background: #D0E4F5;
-      }
-    }
-    thead {
-      background: #0B6FA4;
-
-        th {
-        font-size: 17px;
-        font-weight: bold;
-        color: #FFFFFF;
-        text-align: center;
-        border-left: 2px solid #FFFFFF;
-          &:first-child {
-            border-left: none;
-          }
+        input {
+          height: 3em;
+          width: 100%;
+        }
       }
     }
   }

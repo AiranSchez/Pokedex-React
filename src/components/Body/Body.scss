@@ -1,17 +1,20 @@
-.Content{
+.Content {
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  a{
+
+  a {
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
     // Provisional
     margin-top: 40px;
-    button{
-      font-size:2em;
+
+    button {
+      font-size: 2em;
       font-weight: bold;
       background-color: #f42;
       color: white;
@@ -23,62 +26,54 @@
     }
   }
 
-  .SearchBar{
-    form{
+  .SearchBar {
+    form {
       display: flex;
       flex-direction: column;
       text-align: center;
       align-items: center;
-      width: 400px;
+      width: 300px;
+
       span {
-        font-size:2em;
+        font-size: 2em;
       }
-      input{
+
+      input {
         margin-top: 40px;
         height: 3em;
         width: 100%;
       }
     }
   }
-  .PokemonIndexTable {
-    border: 1px solid #FFFFFF;
-    text-align: center;
-    border-collapse: collapse;
 
-    img {
-      width: 100px;
-      height: 100px;
-    }
-    th {
-      padding: 3px 2px;
-    }
-    td {
-      border: 1px solid #FFFFFF;
-      padding: 3px 2px;
+}
 
-      a {
-        height: 100px;
+@media (min-width: 576px) {
+  .Content {
+    .SearchBar {
+      form {
+        width: 350px;
+
+        input {
+          margin-top: 40px;
+          height: 3em;
+          width: 100%;
+        }
       }
     }
-    tr {
-      height: 100px;
-      border: 1px solid black;
-      &:nth-child(even) {
-        background: #D0E4F5;
-      }
-    }
-    thead {
-      background: #0B6FA4;
+  }
+}
 
-        th {
-        font-size: 17px;
-        font-weight: bold;
-        color: #FFFFFF;
-        text-align: center;
-        border-left: 2px solid #FFFFFF;
-          &:first-child {
-            border-left: none;
-          }
+@media (min-width: 992px) {
+  .Content {
+    .SearchBar {
+      form {
+        width: 400px;
+        input {
+          margin-top: 40px;
+          height: 3em;
+          width: 100%;
+        }
       }
     }
   }

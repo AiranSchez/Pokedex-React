@@ -32,9 +32,11 @@ describe('SearchBar', () => {
           <SearchBar searchTerm={irrelevantText} />
         </BrowserRouter>,
     );
-    const input = renderResult.getByLabelText('labelInput');
-    fireEvent.change(input, { target: { value: 'a' } });
-    expect(input).toBeTruthy();
+    // fireEvent.change(input, { target: { value: 'a' } });
+    const input = renderResult.getByPlaceholderText('Pikachu, Bulbasaur...');
+    expect(input.innerHTML).toBe('');
+    fireEvent.change(renderResult.getByPlaceholderText('Pikachu, Bulbasaur...'), { target: { value: 'a' } });
+    expect(renderResult.getByPlaceholderText('Pikachu, Bulbasaur...')).toBe('a');
   });
 
 });

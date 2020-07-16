@@ -1,3 +1,41 @@
-.PokemonTable{
+.PokemonTable {
+    background-color: white;
+  .PokemonIndexTable {
+    border: 1px solid black;
+    width: 100vw;
+    .Filas {
+      border: 1px solid black;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: center;
+      align-items: center;
 
+      div {
+        display: flex;
+        justify-content: center;
+
+        a {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+}
+
+@media (min-width: 768px) {
+  .PokemonTable {
+    .PokemonIndexTable {
+      width: 90vw;
+
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .PokemonTable {
+    .PokemonIndexTable {
+      width: 70vw;
+    }
+  }
 }

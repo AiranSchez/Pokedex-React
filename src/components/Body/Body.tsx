@@ -10,6 +10,11 @@ interface PokemonTableProps {
     name: string;
     height: number;
     id: number;
+    types:{
+        type:{
+            name: string;
+        }
+    };
 }
 
 interface PokemonTypes {
@@ -42,6 +47,7 @@ export const Body: React.FC<{}> = () => {
                                         name: pokemon.data.name,
                                         height: pokemon.data.height,
                                         id: pokemon.data.id,
+                                        types: pokemon.data.types
                                     }]);
                             setFlag(true);
                         });
@@ -67,7 +73,7 @@ export const Body: React.FC<{}> = () => {
             </select>
             {selectedType &&
                 <p>Has seleccionado: {selectedType} </p>}
-            <PokemonTable flag={flag} pokemonTable={pokemonTable}/>
+            <PokemonTable flag={flag} pokemonTable={pokemonTable} selectedType={selectedType}/>
 
         </div>
     );

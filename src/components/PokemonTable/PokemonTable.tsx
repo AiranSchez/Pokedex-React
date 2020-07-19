@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 interface PokemonTableProps {
     flag: boolean;
     pokemonTable: PokemonTable;
+    selectedType?: string;
 }
 
 export type PokemonTable = {
@@ -12,8 +13,13 @@ export type PokemonTable = {
     name: string;
     height: number;
     id: number;
+    types: {
+        type: {
+            name: string;
+        }
+    }
 }[];
-export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable}) => {
+export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, selectedType}) => {
     return (
         <div className="PokemonTable">
             {flag ? (
@@ -24,7 +30,8 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable}) 
                         <div>Altura</div>
                         <div>Nº en pokedex</div>
                     </div>
-                    {pokemonTable.map((pokemon: any) => (
+                    {selectedType &&
+                        pokemonTable.filter((pokemon:any) => selectedType === pokemon.types[0].type.name ).map((pokemon: any) => (
                         <div className={'Filas'}>
                             <div>
                                 <Link to={`/PokemonDetails/${pokemon.name}`}>
@@ -40,8 +47,36 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable}) 
                             <div>
                                 {pokemon.id}
                             </div>
+                            <div>
+                                {pokemon.types[0].type.name}
+                            </div>
                         </div>
-                    ))}
+                    ))
+                    }
+                    {!selectedType &&
+                        pokemonTable.map((pokemon: any) => (
+                            <div className={'Filas'}>
+                                <div>
+                                    <Link to={`/PokemonDetails/${pokemon.name}`}>
+                                        <img alt="imagen del pokemon" src={pokemon.sprite}/>
+                                    </Link>
+                                </div>
+                                <div>
+                                    <Link to={`/PokemonDetails/${pokemon.name}`}>{pokemon.name}</Link>
+                                </div>
+                                <div>
+                                    {pokemon.height/10}m
+                                </div>
+                                <div>
+                                    {pokemon.id}
+                                </div>
+                                <div>
+                                    {pokemon.types[0].type.name}
+
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
             ) : (
                 <div>Cargando...</div>

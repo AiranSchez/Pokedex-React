@@ -3,7 +3,7 @@ import {PokemonList} from '../pages/PokemonDetails/types';
 
 export default class Client {
    async getPokemonUrlList(){
-        return await axios.get('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0')
+        return await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
             .then(response => response.data.results
             .map((pokemon: PokemonList) => {return pokemon.url;}));
     }

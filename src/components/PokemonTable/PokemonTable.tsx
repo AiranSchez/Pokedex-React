@@ -14,19 +14,6 @@ export type PokemonTable = {
     id: number;
 }[];
 export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable}) => {
-    const compare = (a:any,b:any) => {
-        const idA = a.id;
-        const idB = b.id;
-        let comparison = 0;
-        if(idA > idB){
-            comparison = 1;
-        }
-        else if(idA < idB){
-            comparison = -1;
-        }
-        return comparison;
-    };
-
     return (
         <div className="PokemonTable">
             {flag ? (
@@ -37,7 +24,7 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable}) 
                         <div>Altura</div>
                         <div>Nº en pokedex</div>
                     </div>
-                    {pokemonTable.sort(compare).map((pokemon: any) => (
+                    {pokemonTable.map((pokemon: any) => (
                         <div className={'Filas'}>
                             <div>
                                 <Link to={`/PokemonDetails/${pokemon.name}`}>

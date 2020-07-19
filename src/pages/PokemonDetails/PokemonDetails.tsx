@@ -19,7 +19,7 @@ export const PokemonDetails: React.FC<PokeProps> = () => {
     useEffect(() => {
         setFlag(true);
         const client = new Client();
-        const info = client.getInfo(`https://pokeapi.co/api/v2/pokemon/${urlParam.toLowerCase()}`);
+        const info = client.getPokemonDataFrom(`https://pokeapi.co/api/v2/pokemon/${urlParam.toLowerCase()}`);
         info.then((response) => {
             setNewPokemon((prevState) => ({
                 ...prevState,

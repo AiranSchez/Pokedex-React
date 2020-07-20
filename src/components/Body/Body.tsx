@@ -54,9 +54,8 @@ export const Body: React.FC<{}> = () => {
                         });
                     });
             });
-        client.getPokemonTypes().then(types => types.forEach((singleType: PokemonTypes) => setType((prevState => [...prevState, singleType.name]))));
+        client.getPokemonTypes().then(types => types.forEach((singleType: PokemonTypes) => setType((prevState => [...prevState, singleType.name.charAt(0).toUpperCase()+ singleType.name.slice(1)]))));
     }
-
     useEffect(() => {
         apiCall('0');
     }, []);

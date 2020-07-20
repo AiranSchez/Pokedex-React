@@ -28,7 +28,8 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, s
                         <div>Pokemon</div>
                         <div>Nombre</div>
                         <div>Altura</div>
-                        <div>Nº en pokedex</div>
+                        <div>Pokedex</div>
+                        <div>Type</div>
                     </div>
                     {selectedType &&
                         pokemonTable.filter((pokemon:any) => selectedType === pokemon.types[0].type.name ).map((pokemon: any) => (
@@ -48,9 +49,12 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, s
                                 {pokemon.id}
                             </div>
                             <div className={'types'}>
-                                <div>{pokemon.types[0].type.name}</div>
-                                <div>{pokemon.types[1] &&
-                                pokemon.types[1].type.name}</div>
+                                <div className={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+                                {pokemon.types[1] &&
+                                <div className={pokemon.types[1].type.name}>
+                                    {pokemon.types[1].type.name}
+                                </div>
+                                }
                             </div>
                         </div>
                     ))
@@ -73,9 +77,12 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, s
                                     {pokemon.id}
                                 </div>
                                 <div className={'types'}>
-                                    <div>{pokemon.types[0].type.name}</div>
-                                    <div>{pokemon.types[1] &&
-                                    pokemon.types[1].type.name}</div>
+                                    <div className={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+                                    {pokemon.types[1] &&
+                                        <div className={pokemon.types[1].type.name}>
+                                            {pokemon.types[1].type.name}
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         ))

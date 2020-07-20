@@ -15,12 +15,12 @@
       }
     }
 }
-.NavbarDesktopDontShow{
+.NavbarModalShow{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #7E254E;
+  background: #EF5350;
   padding: 0;
   margin: 0;
   width: 100vw;
@@ -54,10 +54,11 @@
   .NavbarDesktop{
     display: flex;
   }
+  .NavbarModalShow{
+    display: none;
+  }
 }
 
 @media (min-width: 992px) {
-  .NavbarDesktop{
-    display: flex;
-  }
+
 }

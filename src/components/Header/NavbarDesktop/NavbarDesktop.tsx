@@ -8,7 +8,7 @@ interface NavbarDesktopProps {
     onClick?: () => void;
 }
 export const NavbarDesktop: React.FC<NavbarDesktopProps> = ({show, onClick}) => (
-  <div className={!show ? 'NavbarDesktop' : 'NavbarDesktopDontShow'} onClick={onClick}>
+  <div className={!show ? 'NavbarDesktop' : 'NavbarModalShow'} onClick={onClick}>
       <div className="NavbarLink">
           <Link to={ROUTE.Home}>
               Home

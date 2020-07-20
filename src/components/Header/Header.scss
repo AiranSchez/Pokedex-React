@@ -1,32 +1,24 @@
 .Header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   background: #EF5350;
   color: white;
   height: 70px;
   border-bottom: 3px solid darkred;
 
-  .Navbar {
+  .Navbar{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    .NavbarLink {
-      padding: 20px;
-
-      a {
-        text-decoration: none;
-        color: white;
-        &:hover{
-          color: black;
-        }
-      }
-    }
+    margin-right: 25px;
   }
+
 }
 
 @media (min-width: 576px) {
+  .Header{
+    justify-content: center;
+  }
 
 }
 

@@ -27,14 +27,15 @@ export const Body: React.FC<{}> = () => {
     const [pokemonTable, setPokemonTable] = useState<PokemonTableProps[]>([]);
     const [flag, setFlag] = useState(false);
     const [type, setType] = useState<string[]>([]);
-    const [selectedType, setSelectedType] = useState<string>();
+    const [selectedType, setSelectedType] = useState<string>('all');
+    // const [pagination, setPagination] = useState<number>(0);
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
     };
 
-    function apiCall() {
+    function apiCall(offset: string) {
         const client = new Client();
-        client.getPokemonUrlList()
+        client.getPokemonUrlList(offset)
             .then(urls => {
                 return Promise.all(urls.map((url: string) => client.getPokemonDataFrom(url)))
                     .then(pokemons => {
@@ -57,16 +58,29 @@ export const Body: React.FC<{}> = () => {
     }
 
     useEffect(() => {
-        apiCall();
+        apiCall('0');
     }, []);
 //
     const setPokemonType = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedType(event.target.value);
     };
+
+    // const nextPage = () => {
+    //     setPokemonTable([]);
+    //     setPagination(pagination + 10);
+    //     apiCall(pagination.toString());
+    // };
+    // const prevPage = () => {
+    //     setPokemonTable([]);
+    //     setPagination(pagination - 10);
+    //     apiCall(pagination.toString());
+    // };
+
     return (
         <div className="Content">
             <SearchBar searchTerm={searchTerm} onInputChange={onInputChange}/>
             <select name="" id="" onChange={setPokemonType}>
+                <option value="all">- Elige un tipo -</option>
                 {
                     type.map((typeOfPokemon:string) => <option value={typeOfPokemon}>{typeOfPokemon}</option>)
                 }
@@ -74,7 +88,8 @@ export const Body: React.FC<{}> = () => {
             {selectedType &&
                 <p>Has seleccionado: {selectedType} </p>}
             <PokemonTable flag={flag} pokemonTable={pokemonTable} selectedType={selectedType}/>
-
+            {/*<button onClick={prevPage}>Atras</button>*/}
+            {/*<button onClick={nextPage}>Siguiente</button>*/}
         </div>
     );
 };

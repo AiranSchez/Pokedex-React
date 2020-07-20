@@ -1,45 +1,23 @@
 import * as React from 'react';
+import {useState} from 'react';
 import './Header.scss';
-import {Link} from 'react-router-dom';
-import {ROUTE} from '../../routes/routes';
+import {HamburguerMenu} from './HamburguerMenu';
+import {NavbarDesktop} from './NavbarDesktop';
 
-export const Header: React.FC<{}> = () => (
+export const Header: React.FC<{}> = () => {
+    const [showModal, setShowModal] = useState(false);
 
+    function handleModal() {
+        setShowModal(!showModal);
+    }
+    return (
         <div className="Header">
             <div className="Navbar">
-                <div className="NavbarLink">
-                    <Link to={ROUTE.Home}>
-                        Home
-                    </Link>
-                </div>
-                <div className="NavbarLink">
-                    <Link to={ROUTE.ConstructionPage}>
-                        Pokemon Games
-                    </Link>
-                </div>
-                <div className="NavbarLink">
-                    <Link to={ROUTE.ConstructionPage}>
-                        Items
-                    </Link>
-                </div>
-                <div className="NavbarLink">
-                    <Link to={ROUTE.ConstructionPage}>
-                        Pokemon List
-                    </Link>
-                </div>
-                <div className="NavbarLink">
-                    <Link to={ROUTE.ConstructionPage}>
-                        Moves
-                    </Link>
-                </div>
-                <div className="NavbarLink">
-                    <Link to={ROUTE.ConstructionPage}>
-                        Berries
-                    </Link>
-                </div>
+                <HamburguerMenu onClick={handleModal} show={showModal} />
+                <NavbarDesktop show={showModal} onClick={handleModal}/>
             </div>
         </div>
-
-);
+    );
+};
 
 Header.displayName = 'Header';

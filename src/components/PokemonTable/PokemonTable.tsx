@@ -2,7 +2,7 @@ import * as React from 'react';
 import './PokemonTable.scss';
 import {Link} from 'react-router-dom';
 
-interface PokemonTableProps {
+export interface PokemonTableProps {
     flag: boolean;
     pokemonTable: PokemonTable;
     selectedType?: string;
@@ -47,13 +47,15 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, s
                             <div>
                                 {pokemon.id}
                             </div>
-                            <div>
-                                {pokemon.types[0].type.name}
+                            <div className={'types'}>
+                                <div>{pokemon.types[0].type.name}</div>
+                                <div>{pokemon.types[1] &&
+                                pokemon.types[1].type.name}</div>
                             </div>
                         </div>
                     ))
                     }
-                    {!selectedType &&
+                    {selectedType === 'all' &&
                         pokemonTable.map((pokemon: any) => (
                             <div className={'Filas'}>
                                 <div>
@@ -70,9 +72,10 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, s
                                 <div>
                                     {pokemon.id}
                                 </div>
-                                <div>
-                                    {pokemon.types[0].type.name}
-
+                                <div className={'types'}>
+                                    <div>{pokemon.types[0].type.name}</div>
+                                    <div>{pokemon.types[1] &&
+                                    pokemon.types[1].type.name}</div>
                                 </div>
                             </div>
                         ))

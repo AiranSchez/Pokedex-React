@@ -1,4 +1,4 @@
-export type Pokemon = {
+export interface Pokemon {
   name: string;
   sprites: {
     front_default: string;
@@ -9,11 +9,12 @@ export type Pokemon = {
       name: string
     }
   }[];
-};
+}
 
-export type PokemonList = {
+export interface PokemonList {
   name: string;
-  url: string
-};
+  url: string;
+}
+
 
 

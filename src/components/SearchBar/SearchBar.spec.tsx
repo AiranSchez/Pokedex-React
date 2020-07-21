@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { render, fireEvent, RenderResult } from '@testing-library/react';
+import {fireEvent, render, RenderResult, screen} from '@testing-library/react';
 import { SearchBar } from './';
 import { BrowserRouter } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 
 describe('SearchBar', () => {
   it('check if button is rendered', () => {
@@ -26,17 +27,22 @@ describe('SearchBar', () => {
 
   it('check if input can be writted', () => {
 
-    const irrelevantText = 'pikachu';
-    const renderResult = render(
+    let irrelevantText = 'pikachu';
+
+    function handleChange(e:React.ChangeEvent<HTMLInputElement>) {
+      irrelevantText = e.target.value;
+    }
+
+    render(
         <BrowserRouter>
-          <SearchBar searchTerm={irrelevantText} />
+          <SearchBar searchTerm={irrelevantText} onInputChange={handleChange}/>
         </BrowserRouter>,
     );
-    // fireEvent.change(input, { target: { value: 'a' } });
-    const input = renderResult.getByPlaceholderText('Pikachu, Bulbasaur...');
-    expect(input.innerHTML).toBe('');
-    fireEvent.change(renderResult.getByPlaceholderText('Pikachu, Bulbasaur...'), { target: { value: 'a' } });
-    expect(renderResult.getByPlaceholderText('Pikachu, Bulbasaur...')).toBe('a');
+    const inputButton = screen.getByPlaceholderText('Pikachu, Bulbasaur...');
+    // @ts-ignore
+    expect(inputButton.value).toBe('pikachu');
+    userEvent.type(inputButton, 'Gyarados');
+    // @ts-ignore
+    expect(inputButton.value).toBe('Gyarados');
   });
-
 });

@@ -32,7 +32,7 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, s
                         <div>Type</div>
                     </div>
                     {selectedType &&
-                        pokemonTable.filter((pokemon:any) => selectedType === pokemon.types[0].type.name ).map((pokemon: any) => (
+                        pokemonTable.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name ).map((pokemon: any) => (
                         <div className={'Filas'}>
                             <div>
                                 <Link to={`/PokemonDetails/${pokemon.name}`}>

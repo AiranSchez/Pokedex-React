@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {fireEvent, render, RenderResult, screen} from '@testing-library/react';
-import { SearchBar } from './';
-import { BrowserRouter } from 'react-router-dom';
+import {render, RenderResult, screen} from '@testing-library/react';
+import {SearchBar} from './';
+import {BrowserRouter} from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import {Body} from '../Body';
 
 describe('SearchBar', () => {
   it('check if button is rendered', () => {
@@ -26,21 +27,14 @@ describe('SearchBar', () => {
   });
 
   it('check if input can be writted', () => {
-
-    let irrelevantText = 'pikachu';
-
-    function handleChange(e:React.ChangeEvent<HTMLInputElement>) {
-      irrelevantText = e.target.value;
-    }
-
     render(
         <BrowserRouter>
-          <SearchBar searchTerm={irrelevantText} onInputChange={handleChange}/>
+          <Body/>
         </BrowserRouter>,
     );
     const inputButton = screen.getByPlaceholderText('Pikachu, Bulbasaur...');
     // @ts-ignore
-    expect(inputButton.value).toBe('pikachu');
+    expect(inputButton.value).toBe('');
     userEvent.type(inputButton, 'Gyarados');
     // @ts-ignore
     expect(inputButton.value).toBe('Gyarados');

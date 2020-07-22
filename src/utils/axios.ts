@@ -12,6 +12,10 @@ export default class Client {
         return await axios.get(url);
     }
 
+    async getPokemonDataFromUrlWithParams(param:string){
+        return await axios.get(`https://pokeapi.co/api/v2/pokemon/${param.toLowerCase()}`);
+    }
+
     async getPokemonTypes(){
         return await axios.get('https://pokeapi.co/api/v2/type').then(response => {return response.data.results;});
     }

@@ -3,7 +3,7 @@ import './PokemonTable.scss';
 import {Link} from 'react-router-dom';
 
 export interface PokemonTableProps {
-    flag: boolean;
+    isLoading: boolean;
     pokemonTable: PokemonTable;
     selectedType?: string;
 }
@@ -19,10 +19,10 @@ export type PokemonTable = {
         }
     }
 }[];
-export const PokemonTable: React.FC<PokemonTableProps> = ({flag, pokemonTable, selectedType}) => {
+export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTable, selectedType}) => {
     return (
         <div className="PokemonTable">
-            {flag ? (
+            {isLoading ? (
                 <div className={'PokemonIndexTable'}>
                     <div className={'Filas'}>
                         <div>Pokemon</div>

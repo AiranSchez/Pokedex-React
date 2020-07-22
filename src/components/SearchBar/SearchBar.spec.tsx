@@ -4,6 +4,7 @@ import {SearchBar} from './';
 import {BrowserRouter} from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import {Body} from '../Body';
+import '@testing-library/jest-dom/extend-expect';
 
 describe('SearchBar', () => {
   it('check if button is rendered', () => {
@@ -33,10 +34,8 @@ describe('SearchBar', () => {
         </BrowserRouter>,
     );
     const inputButton = screen.getByPlaceholderText('Pikachu, Bulbasaur...');
-    // @ts-ignore
-    expect(inputButton.value).toBe('');
+    expect(inputButton).toBe('');
     userEvent.type(inputButton, 'Gyarados');
-    // @ts-ignore
-    expect(inputButton.value).toBe('Gyarados');
+    expect(inputButton).toHaveValue('Gyarados');
   });
 });

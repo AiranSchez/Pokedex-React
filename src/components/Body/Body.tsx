@@ -25,7 +25,7 @@ interface PokemonTypes {
 export const Body: React.FC<{}> = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [pokemonTable, setPokemonTable] = useState<PokemonTableProps[]>([]);
-    const [flag, setFlag] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [type, setType] = useState<string[]>([]);
     const [selectedType, setSelectedType] = useState<string>('all');
     // const [pagination, setPagination] = useState<number>(0);
@@ -33,7 +33,7 @@ export const Body: React.FC<{}> = () => {
         setSearchTerm(e.target.value);
     };
 
-    function apiCall(offset: string) {
+    const apiCall = (offset: string) => {
         const client = new Client();
         client.getPokemonUrlList(offset)
             .then(urls => {
@@ -50,12 +50,12 @@ export const Body: React.FC<{}> = () => {
                                         id: pokemon.data.id,
                                         types: pokemon.data.types
                                     }]);
-                            setFlag(true);
+                            setIsLoading(true);
                         });
                     });
             });
         client.getPokemonTypes().then(types => types.forEach((singleType: PokemonTypes) => setType((prevState => [...prevState, singleType.name.charAt(0).toUpperCase()+ singleType.name.slice(1)]))));
-    }
+    };
     useEffect(() => {
         apiCall('0');
     }, []);
@@ -86,7 +86,7 @@ export const Body: React.FC<{}> = () => {
             </select>
             {selectedType &&
                 <p>Has seleccionado: {selectedType} </p>}
-            <PokemonTable flag={flag} pokemonTable={pokemonTable} selectedType={selectedType}/>
+            <PokemonTable isLoading={isLoading} pokemonTable={pokemonTable} selectedType={selectedType}/>
             {/*<button onClick={prevPage}>Atras</button>*/}
             {/*<button onClick={nextPage}>Siguiente</button>*/}
         </div>

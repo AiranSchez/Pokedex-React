@@ -10,7 +10,7 @@ export const HamburguerMenu: React.FC<NabBarMobilProps> = ({onClick, show}) => (
     <div className="HamburguerMenu">
         {
             !show ?
-                <div className={'container'} onClick={onClick}>
+                <div className={'container'} aria-label="HamburguerMenu" onClick={onClick}>
                     <span/>
                     <span/>
                     <span/>

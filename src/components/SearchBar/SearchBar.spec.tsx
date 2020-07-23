@@ -34,7 +34,7 @@ describe('SearchBar', () => {
         </BrowserRouter>,
     );
     const inputButton = screen.getByPlaceholderText('Pikachu, Bulbasaur...');
-    expect(inputButton).toBe('');
+    expect(inputButton.value).toBe('');
     userEvent.type(inputButton, 'Gyarados');
     expect(inputButton).toHaveValue('Gyarados');
   });

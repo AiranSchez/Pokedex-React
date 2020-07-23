@@ -22,7 +22,7 @@ describe('PokemonTable', () => {
     });
 
 
-    it('should display the name of the pokemon part 2', async () => {
+    it('Should return pokemons', async () => {
         const URL = `https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`;
         axios.get.mockResolvedValue(() => {});
         const client = new Client();

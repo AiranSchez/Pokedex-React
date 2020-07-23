@@ -20,6 +20,34 @@ export type PokemonTable = {
     }
 }[];
 export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTable, selectedType}) => {
+    const pokemonTableContent = (pokemon: any) => {
+        return(
+            <div className={'Filas'}>
+                <div>
+                    <Link to={`/PokemonDetails/${pokemon.name}`}>
+                        <img alt="imagen del pokemon" src={pokemon.sprite}/>
+                    </Link>
+                </div>
+                <div>
+                    <Link to={`/PokemonDetails/${pokemon.name}`}>{pokemon.name}</Link>
+                </div>
+                <div>
+                    {pokemon.height/10}m
+                </div>
+                <div>
+                    {pokemon.id}
+                </div>
+                <div className={'types'}>
+                    <div className={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+                    {pokemon.types[1] &&
+                    <div className={pokemon.types[1].type.name}>
+                        {pokemon.types[1].type.name}
+                    </div>
+                    }
+                </div>
+            </div>
+        );
+    };
     return (
         <div className="PokemonTable">
             {isLoading ? (
@@ -33,58 +61,12 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTab
                     </div>
                     {selectedType &&
                         pokemonTable.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name ).map((pokemon: any) => (
-                        <div className={'Filas'}>
-                            <div>
-                                <Link to={`/PokemonDetails/${pokemon.name}`}>
-                                    <img alt="imagen del pokemon" src={pokemon.sprite}/>
-                                </Link>
-                            </div>
-                            <div>
-                                <Link to={`/PokemonDetails/${pokemon.name}`}>{pokemon.name}</Link>
-                            </div>
-                            <div>
-                                {pokemon.height/10}m
-                            </div>
-                            <div>
-                                {pokemon.id}
-                            </div>
-                            <div className={'types'}>
-                                <div className={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
-                                {pokemon.types[1] &&
-                                <div className={pokemon.types[1].type.name}>
-                                    {pokemon.types[1].type.name}
-                                </div>
-                                }
-                            </div>
-                        </div>
+                            pokemonTableContent(pokemon)
                     ))
                     }
                     {selectedType === 'all' &&
                         pokemonTable.map((pokemon: any) => (
-                            <div className={'Filas'}>
-                                <div>
-                                    <Link to={`/PokemonDetails/${pokemon.name}`}>
-                                        <img alt="imagen del pokemon" src={pokemon.sprite}/>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link to={`/PokemonDetails/${pokemon.name}`}>{pokemon.name}</Link>
-                                </div>
-                                <div>
-                                    {pokemon.height/10}m
-                                </div>
-                                <div>
-                                    {pokemon.id}
-                                </div>
-                                <div className={'types'}>
-                                    <div className={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
-                                    {pokemon.types[1] &&
-                                        <div className={pokemon.types[1].type.name}>
-                                            {pokemon.types[1].type.name}
-                                        </div>
-                                    }
-                                </div>
-                            </div>
+                            pokemonTableContent(pokemon)
                         ))
                     }
                 </div>

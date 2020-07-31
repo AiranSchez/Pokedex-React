@@ -1,11 +1,16 @@
 import * as React from 'react';
+import {useContext} from 'react';
 import './PokemonTable.scss';
 import {Link} from 'react-router-dom';
+import {Context, ContextProps} from '../../Context';
+import {GenerationsProps} from '../../pages/PokemonDetails/types';
+import {PokemonGenerationsInterface} from '../Body/Body';
 
 export interface PokemonTableProps {
     isLoading: boolean;
-    pokemonTable: PokemonTable;
-    selectedType?: string;
+    pokemonTable: PokemonTable[];
+    selectedType: string;
+    selectedGeneration?: GenerationsProps;
 }
 
 export type PokemonTable = {
@@ -19,7 +24,7 @@ export type PokemonTable = {
         }
     }
 }[];
-export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTable, selectedType}) => {
+export const PokemonTable: React.FC<PokemonTableProps> = ({selectedGeneration,isLoading, pokemonTable, selectedType}) => {
     const pokemonTableContent = (pokemon: any) => {
         return(
             <div className={'Filas'}>
@@ -65,9 +70,7 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTab
                     ))
                     }
                     {selectedType === 'all' &&
-                        pokemonTable.map((pokemon: any) => (
-                            pokemonTableContent(pokemon)
-                        ))
+                        pokemonTable.map(pokemon => pokemonTableContent(pokemon))
                     }
                 </div>
             ) : (

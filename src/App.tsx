@@ -7,6 +7,7 @@ import {Home} from './pages/Home/Home';
 import {PokemonDetails} from './pages/PokemonDetails/PokemonDetails';
 import {ROUTE} from './routes/routes';
 import {ConstructionPage} from './pages/ConstructionPage/ConstructionPage';
+import {PokemonList} from './pages/PokemonList/PokemonList';
 
 const App: React.FC = () => {
     return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
                         <Route exact path={ROUTE.Home} component={Home}/>
                         <Route exact path={ROUTE.PokemonDetails} component={PokemonDetails}/>
                         <Route exact path={ROUTE.ConstructionPage} component={ConstructionPage}/>
+                        <Route exact path={ROUTE.PokemonList} component={PokemonList}/>
                     </Switch>
                 </main>
                 <Footer/>

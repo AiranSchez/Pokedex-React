@@ -25,7 +25,7 @@ export const NavbarDesktop: React.FC<NavbarDesktopProps> = ({show, onClick}) => 
           </Link>
       </div>
       <div className="NavbarLink">
-          <Link to={ROUTE.ConstructionPage}>
+          <Link to={ROUTE.PokemonList}>
               Pokemon List
           </Link>
       </div>

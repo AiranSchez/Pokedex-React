@@ -1,5 +1,4 @@
 .Content {
-  min-width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,15 +35,28 @@
           }
         }
       }
-
-
       span {
         font-size: 2em;
         margin-bottom: 10%;
       }
-
-
     }
+  }
+
+  .Selects{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    margin-bottom: 25px;
+    select{
+      align-self: center;
+      height: 30px;
+      margin: 0 20px ;
+    }
+  }
+  .pokeball{
+
   }
 }
 

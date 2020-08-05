@@ -1,11 +1,13 @@
 import * as React from 'react';
 import './PokemonTable.scss';
 import {Link} from 'react-router-dom';
+import {GenerationsProps} from '../../pages/PokemonDetails/GenericInterfaces';
 
 export interface PokemonTableProps {
     isLoading: boolean;
-    pokemonTable: PokemonTable;
-    selectedType?: string;
+    pokemonTable: PokemonTable[];
+    selectedType: string;
+    selectedGeneration?: GenerationsProps;
 }
 
 export type PokemonTable = {
@@ -19,7 +21,7 @@ export type PokemonTable = {
         }
     }
 }[];
-export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTable, selectedType}) => {
+export const PokemonTable: React.FC<PokemonTableProps> = ({selectedGeneration,isLoading, pokemonTable, selectedType}) => {
     const pokemonTableContent = (pokemon: any) => {
         return(
             <div className={'Filas'}>
@@ -50,7 +52,7 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTab
     };
     return (
         <div className="PokemonTable">
-            {isLoading ? (
+            {!isLoading ? (
                 <div className={'PokemonIndexTable'}>
                     <div className={'Filas'}>
                         <div>Pokemon</div>
@@ -60,14 +62,12 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({isLoading, pokemonTab
                         <div>Type</div>
                     </div>
                     {selectedType &&
-                        pokemonTable.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name ).map((pokemon: any) => (
+                        pokemonTable.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name || selectedType.toLowerCase() === pokemon.types[1]?.type.name ).map((pokemon: any) => (
                             pokemonTableContent(pokemon)
                     ))
                     }
                     {selectedType === 'all' &&
-                        pokemonTable.map((pokemon: any) => (
-                            pokemonTableContent(pokemon)
-                        ))
+                        pokemonTable.map(pokemon => pokemonTableContent(pokemon))
                     }
                 </div>
             ) : (

@@ -1,3 +1,69 @@
-.SearchBar{
-  margin-bottom: 30px;
+.SearchBar {
+  background-color: #263238;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  span {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .Content {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      div{
+        label{
+          color: white;
+        }
+      }
+      color: white;
+      min-width: 200px;
+      height: 60px;
+      align-self: center;
+      .MuiAutocomplete-endAdornment{
+        color: white;
+        margin-top: -7px;
+        display: flex ;
+        flex-direction: row-reverse;
+        width: 25px;
+        button{
+          color: white;
+          height: 30px;
+        }
+      }
+      fieldset{
+        border: 1px solid white;
+
+        legend {
+          color: white;
+
+        }
+      }
+    }
+
+    .SearchButton {
+      margin-left: 20px;
+      height: 60px;
+      width: 100px;
+      background-color: #e74c3c;
+      border-radius: 10px;
+      border: 2px solid black;
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
+  }
 }

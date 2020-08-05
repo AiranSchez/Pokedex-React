@@ -1,16 +1,18 @@
 .Header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background: #EF5350;
   color: white;
   height: 70px;
-  border-bottom: 3px solid darkred;
+  display: flex;
+  justify-content: flex-end;
+  svg{
 
+
+  }
   .Navbar{
+    justify-content: flex-end;
     display: flex;
     align-items: center;
     margin-right: 25px;
+    padding-bottom: 13px;
   }
 
 }
@@ -18,10 +20,12 @@
 @media (min-width: 576px) {
   .Header{
     justify-content: center;
+    .Navbar {
+      justify-content: center;
+    }
   }
 
 }
 
 @media (min-width: 992px) {
-
 }

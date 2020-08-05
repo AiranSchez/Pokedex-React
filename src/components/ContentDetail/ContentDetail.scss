@@ -1,18 +1,38 @@
-.ContentDetail{
+.ContentDetail {
   display: flex;
   justify-content: center;
   align-items: center;
-  img{
-    width: 100px;
-  }
+  background-color: white;
+  min-width: 100vw;
 
-  .PokemonInfo{
+  .PokemonInfo {
     display: flex;
     flex-direction: column;
 
-    .PokemonStats{
+    .PokemonImage {
+      align-self: center;
+      img {
+        width: 150px;
+      }
+
+    }
+
+
+    .PokemonStats {
       display: flex;
       justify-content: space-between;
     }
+  }
+}
+
+@media (min-width: 576px) {
+  .ContentDetail {
+    min-width: 80vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .ContentDetail {
+    min-width: 70vw;
   }
 }

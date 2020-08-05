@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GenerationsProps, PokemonList} from '../pages/PokemonDetails/types';
+import {GenerationsProps, PokemonList} from '../pages/PokemonDetails/GenericInterfaces';
 
 
 export default class Client {

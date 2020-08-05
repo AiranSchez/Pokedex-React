@@ -1,44 +1,24 @@
 import Client from '../../utils/axios';
-import {GenerationsProps} from '../../pages/PokemonDetails/types';
+import {GenerationsProps, Pokemon} from '../../pages/PokemonDetails/GenericInterfaces';
+import {PokemonTable} from '../../components/PokemonTable';
 
-export const getAllPokemonNames = () => {
+export const getAllPokemonNames = async () : Promise<string[]>=> {
     const client = new Client();
-    const array: any = [];
-    client.getAllPokemonNames()
-        .then(pokemonName => {
-            pokemonName.forEach((name: string) => array.push(name));
-        });
-    return array;
+    const names = await client.getAllPokemonNames();
+    return names.map((name: string) => name);
 };
 
-export const getPokemonByGeneration = (generation: GenerationsProps) => {
+export const getPokemonByGeneration = async (generation: GenerationsProps): Promise<PokemonTable[]> => {
     const client = new Client();
-    const array: string[] = [];
-    client.getPokemonUrlList(generation)
-        .then(urls => {
-            return Promise.all(urls.map((url:string) => client.getPokemonDataFrom(url)))
-                .then(pokemons => pokemons.forEach((pokemon:any) => array.push(pokemon.data)));});
-    return array;
-};
+    const urls = await client.getPokemonUrlList(generation);
+    const pokemonsDetails: Pokemon[] = await Promise.all(urls.map((url: string) => client.getPokemonDataFrom(url)));
 
-// export const getPokemonByGeneration = (generation: GenerationsProps) => {
-//     const client = new Client();
-//     const pokemonTable: any = [];
-//     client.getPokemonUrlList(generation)
-//         .then(urls => {
-//             return Promise.all(urls.map((url: string) => client.getPokemonDataFrom(url)))
-//                 .then(pokemons => {
-//                     pokemons.forEach((pokemon: any) => {
-//                         pokemonTable.push(
-//                                 {
-//                                     sprite: pokemon.data.sprites.front_default,
-//                                     name: pokemon.data.name,
-//                                     height: pokemon.data.height,
-//                                     id: pokemon.data.id,
-//                                     types: pokemon.data.types
-//                                 });
-//                     });
-//                 });
-//         });
-//     return pokemonTable;
-// };
+    return pokemonsDetails.map((pokemon: Pokemon): PokemonTable => ({
+            // @ts-ignore
+            sprite: pokemon.data.sprites.front_default,
+            name: pokemon.data.name,
+            height: pokemon.data.height,
+            id: pokemon.data.id,
+            types: pokemon.data.types
+    }));
+};

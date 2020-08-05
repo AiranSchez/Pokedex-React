@@ -1,4 +1,4 @@
-import {Generations} from '../../pages/PokemonDetails/types';
+import {Generations} from '../../pages/PokemonDetails/GenericInterfaces';
 
 export default class Utils {
 }

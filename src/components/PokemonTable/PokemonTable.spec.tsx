@@ -5,7 +5,7 @@ import {Body} from '../Body';
 import Client from '../../utils/axios';
 
 import axios from 'axios';
-import {Generations} from '../../pages/PokemonDetails/types';
+import {Generations} from '../../pages/PokemonDetails/GenericInterfaces';
 
 jest.mock('axios');
 

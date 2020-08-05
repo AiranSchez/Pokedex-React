@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './ContentDetail.scss';
-import {Pokemon} from '../../pages/PokemonDetails/types';
+import {Pokemon} from '../../pages/PokemonDetails/GenericInterfaces';
 
 interface ContentDetailProps {
     pokemon: Pokemon;

@@ -4,7 +4,7 @@ import './styles.scss';
 import {ContentDetail} from '../../components/ContentDetail';
 import {useParams} from 'react-router-dom';
 import '../../assets/Pokeball/pokeball-style.css';
-import {Pokemon} from './types';
+import {Pokemon} from './GenericInterfaces';
 import Client from '../../utils/axios';
 import {Context} from '../../Context';
 

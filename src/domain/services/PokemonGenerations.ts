@@ -1,14 +1,10 @@
 import Client from '../../utils/axios';
-import {GenerationsInterface} from '../../components/Body/Body';
+import {GenerationsInterface} from '../../pages/PokemonDetails/GenericInterfaces';
 
-export const getPokemonGenerations = () => {
+export const getPokemonGenerations = async (): Promise<GenerationsInterface[]> => {
     const client = new Client();
-    const array:any= [];
-    client.getPokemonGenerations()
-        .then(generationsObject => {
-            generationsObject.forEach((generation: string) => array.push(generation));
-        });
-    return array;
+    const generations = await client.getPokemonGenerations();
+    return generations.map((generation: GenerationsInterface): GenerationsInterface => generation);
 };
 
 

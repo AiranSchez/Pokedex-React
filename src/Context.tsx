@@ -1,18 +1,14 @@
 import React, {createContext, useEffect, useState} from 'react';
 import {getAllPokemonNames} from './domain/services/Pokemon';
-import {Generations, GenerationsProps} from './pages/PokemonDetails/types';
-import {getPokemonGenerations} from './domain/services/PokemonGenerations';
+import {Generations, GenerationsProps} from './pages/PokemonDetails/GenericInterfaces';
 
 export interface ContextProps {
     // pokemonTable: PokemonTableProps[];
-    pokemonTable: any;
     pokemonList: string[];
-    generations: string[];
-    setGenerations: (params: string[]) => void;
+    selectedGeneration: GenerationsProps;
+    setSelectedGeneration: (params: GenerationsProps) => void;
     theme: string;
     setTheme: (param: string) => void;
-    setSelectedGeneration: (params: GenerationsProps) => void;
-    selectedGeneration: GenerationsProps;
 }
 
 // @ts-ignore
@@ -27,21 +23,9 @@ export const Provider = ({children}) => {
         offset: Generations.first.offset,
         name: Generations.first.name
     });
-
     useEffect(() => {
-        setPokemonList(getAllPokemonNames);
+        getAllPokemonNames().then(setPokemonList);
     },[]);
-    // useEffect(() => {
-    //     switch (selectedGeneration.name) {
-    //         case 'generation-i': setPokemonTable({...pokemonTable, firstgeneration: getPokemonByGeneration(selectedGeneration)}); break;
-    //         case 'generation-ii': setPokemonTable({...pokemonTable, secondgeneration: getPokemonByGeneration(selectedGeneration)}); break;
-    //         case 'generation-iii': setPokemonTable({...pokemonTable, thirdgeneration: getPokemonByGeneration(selectedGeneration)}); break;
-    //         case 'generation-iv': setPokemonTable({...pokemonTable, fourthgeneration: getPokemonByGeneration(selectedGeneration)}); break;
-    //         case 'generation-v': setPokemonTable({...pokemonTable, fifthgeneration: getPokemonByGeneration(selectedGeneration)}); break;
-    //         case 'generation-vi': setPokemonTable({...pokemonTable, sixthgeneration: getPokemonByGeneration(selectedGeneration)}); break;
-    //         case 'generation-vii': setPokemonTable({...pokemonTable, seventhgeneration: getPokemonByGeneration(selectedGeneration)}); break;
-    //     }
-    // },[selectedGeneration]);
     const value = {
         pokemonList,
         selectedGeneration,

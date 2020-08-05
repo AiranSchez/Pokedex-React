@@ -1,10 +1,7 @@
 import * as React from 'react';
-import {useContext} from 'react';
 import './PokemonTable.scss';
 import {Link} from 'react-router-dom';
-import {Context, ContextProps} from '../../Context';
-import {GenerationsProps} from '../../pages/PokemonDetails/types';
-import {PokemonGenerationsInterface} from '../Body/Body';
+import {GenerationsProps} from '../../pages/PokemonDetails/GenericInterfaces';
 
 export interface PokemonTableProps {
     isLoading: boolean;
@@ -55,7 +52,7 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({selectedGeneration,is
     };
     return (
         <div className="PokemonTable">
-            {isLoading ? (
+            {!isLoading ? (
                 <div className={'PokemonIndexTable'}>
                     <div className={'Filas'}>
                         <div>Pokemon</div>
@@ -65,7 +62,7 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({selectedGeneration,is
                         <div>Type</div>
                     </div>
                     {selectedType &&
-                        pokemonTable.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name ).map((pokemon: any) => (
+                        pokemonTable.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name || selectedType.toLowerCase() === pokemon.types[1]?.type.name ).map((pokemon: any) => (
                             pokemonTableContent(pokemon)
                     ))
                     }

@@ -3,28 +3,14 @@ import {useContext, useEffect, useState} from 'react';
 import './Body.scss';
 import {SearchBar} from '../SearchBar';
 import '../../assets/Pokeball/pokeball-style.css';
-import {Generations, GenerationsProps, Pokemon} from '../../pages/PokemonDetails/types';
+import {Generations, GenerationsInterface} from '../../pages/PokemonDetails/GenericInterfaces';
 import {Context, ContextProps} from '../../Context';
 import {getPokemonTypes} from '../../domain/services/PokemonTypes';
 import {getPokemonGenerations} from '../../domain/services/PokemonGenerations';
 import {PokemonTable} from '../PokemonTable';
-import Client from '../../utils/axios';
 import {getPokemonByGeneration} from '../../domain/services/Pokemon';
-import {PokemonTableProps} from '../PokemonTable/PokemonTable';
 
-export interface GenerationsInterface {
-    name: string;
-    url: string;
-}
-export interface PokemonGenerationsInterface {
-    firstgen: PokemonTable;
-    secondgen: PokemonTable;
-    thirdgen: PokemonTable;
-    fourthgen: PokemonTable;
-    fifthgen: PokemonTable;
-    sixthgen: PokemonTable;
-    seventhgen: PokemonTable;
-}
+
 export const Body: React.FC<{}> = () => {
     const context = useContext<ContextProps>(Context);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -32,42 +18,19 @@ export const Body: React.FC<{}> = () => {
     const [selectedType, setSelectedType] = useState<string>('all');
     const [generations, setGenerations] = useState<GenerationsInterface[]>([]);
     const [pokemonTable, setPokemonTable] = useState<PokemonTable[]>([]) ;
-    const apiCall =  (generation: GenerationsProps) => {
-        const client = new Client();
-        setPokemonTable([]);
-        client.getPokemonUrlList(generation)
-            .then(urls => {
-                return Promise.all(urls.map((url: string) => client.getPokemonDataFrom(url)))
-                    .then(pokemons => {
-                        pokemons.forEach((pokemon:any) => {
-                            setPokemonTable((prevState:any) =>
-                                [
-                                    ...prevState,
-                                    {
-                                        sprite: pokemon.data.sprites.front_default,
-                                        name: pokemon.data.name,
-                                        height: pokemon.data.height,
-                                        id: pokemon.data.id,
-                                        types: pokemon.data.types
-                                    }]);
-                            setIsLoading(true);
-                        });
-                    });
-            });
-    };
     useEffect(() => {
-        setType(getPokemonTypes());
-        setGenerations(getPokemonGenerations());
+        getPokemonTypes().then(setType);
+        getPokemonGenerations().then(setGenerations);
     }, []);
     useEffect(() => {
-        apiCall(context.selectedGeneration);
+        if(!isLoading){
+           setIsLoading(true);
+        }
+        getPokemonByGeneration(context.selectedGeneration).then(setPokemonTable).then(() => setIsLoading(false));
     }, [context.selectedGeneration]);
-
-
     const setPokemonType = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedType(event.target.value);
     };
-
     const handleGenerationSelected = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setIsLoading(false);
         switch (event.target.value) {
@@ -111,7 +74,7 @@ export const Body: React.FC<{}> = () => {
                     }
                 </select>
             </div>
-            {isLoading ?
+            {!isLoading ?
                 <PokemonTable isLoading={isLoading} selectedType={selectedType} pokemonTable={pokemonTable} />
                 : <div className="pokeball">
                     <div className="pokeball__button"/>
@@ -122,4 +85,3 @@ export const Body: React.FC<{}> = () => {
 };
 
 Body.displayName = 'Body';
-

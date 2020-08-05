@@ -66,11 +66,6 @@ export interface PokemonList {
     url: string;
 }
 
-export interface PokemonGeneration {
-    name: string;
-    url: string;
-}
-
 export interface GenerationsProps {
     limit: number;
     offset: number;
@@ -79,7 +74,7 @@ export interface GenerationsProps {
 
 export const Generations = {
     first: {limit: 151, offset: 0, name: 'generation-i'},
-    second: {limit: 101, offset: 151, name: 'generation-ii'},
+    second: {limit: 100, offset: 151, name: 'generation-ii'},
     third: {limit: 135, offset: 251, name: 'generation-iii'},
     fourth: {limit: 107, offset: 386, name: 'generation-iv'},
     fifth: {limit: 156, offset: 493, name: 'generation-v'},
@@ -92,14 +87,7 @@ export interface PokemonTypes {
     url: string;
 }
 
-export interface PokemonTableProps {
-    sprite: string;
+export interface GenerationsInterface {
     name: string;
-    height: number;
-    id: number;
-    types: {
-        type: {
-            name: string
-        }
-    };
+    url: string;
 }

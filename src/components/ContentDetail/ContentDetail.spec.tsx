@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {render, RenderResult} from '@testing-library/react';
 import {ContentDetail} from './';
-import {Pokemon} from '../../pages/PokemonDetails/types';
+import {Pokemon} from '../../pages/PokemonDetails/GenericInterfaces';
 
 describe('ContentDetail', () => {
     it('should display the name of the Pokemon', () => {

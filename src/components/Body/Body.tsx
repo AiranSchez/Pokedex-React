@@ -10,29 +10,67 @@ import {getPokemonGenerations} from '../../domain/services/PokemonGenerations';
 import {PokemonTable} from '../PokemonTable';
 import {getPokemonByGeneration} from '../../domain/services/Pokemon';
 
-
+interface  PokemonTableVersion2 {
+    firstgen: PokemonTable[];
+    secondgen: PokemonTable[];
+    thirdgen: PokemonTable[];
+    fourthgen: PokemonTable[];
+    fifthgen: PokemonTable[];
+    sixthgen: PokemonTable[];
+    seventhgen: PokemonTable[];
+}
+interface CheckGeneration {
+    [key : string] : boolean;
+}
 export const Body: React.FC<{}> = () => {
     const context = useContext<ContextProps>(Context);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [type, setType] = useState<string[]>([]);
     const [selectedType, setSelectedType] = useState<string>('all');
     const [generations, setGenerations] = useState<GenerationsInterface[]>([]);
-    const [pokemonTable, setPokemonTable] = useState<PokemonTable[]>([]) ;
+    // const [pokemonTable, setPokemonTable] = useState<PokemonTable[]>([]) ;
+    const [pokemonTable, setPokemonTable] = useState<PokemonTableVersion2>({firstgen: [], secondgen: [], thirdgen: [], fourthgen: [], fifthgen: [], sixthgen: [], seventhgen: []}) ;
+    const [checkedGeneration, setCheckedGeneration] = useState<CheckGeneration>(
+        {'generation-i' : false,
+        'generation-ii' : false,
+        'generation-iii' : false,
+        'generation-iv' : false,
+        'generation-v' : false,
+        'generation-vi' : false,
+        'generation-vii' : false
+        });
     useEffect(() => {
         getPokemonTypes().then(setType);
         getPokemonGenerations().then(setGenerations);
     }, []);
     useEffect(() => {
-        if(!isLoading){
-           setIsLoading(true);
+        if(!checkedGeneration[context.selectedGeneration.name]){
+            if(!isLoading){
+                setIsLoading(true);
+            }
+            getPokemonByGeneration(context.selectedGeneration)
+                .then(response => handleGenerationSet(response))
+                .then(() => setIsLoading(false));
         }
-        getPokemonByGeneration(context.selectedGeneration).then(setPokemonTable).then(() => setIsLoading(false));
+        else{
+            setIsLoading(false);
+        }
     }, [context.selectedGeneration]);
+    const handleGenerationSet = (response: any) => {
+        switch (response.length) {
+            case 151: setPokemonTable({...pokemonTable, firstgen: response}); setCheckedGeneration({...checkedGeneration, 'generation-i': true}); break;
+            case 100: setPokemonTable({...pokemonTable, secondgen: response}); setCheckedGeneration({...checkedGeneration, 'generation-ii': true}); break;
+            case 135: setPokemonTable({...pokemonTable, thirdgen: response}); setCheckedGeneration({...checkedGeneration, 'generation-iii': true}); break;
+            case 107: setPokemonTable({...pokemonTable, fourthgen: response});setCheckedGeneration({...checkedGeneration, 'generation-iv': true}); break;
+            case 156: setPokemonTable({...pokemonTable, fifthgen: response});setCheckedGeneration({...checkedGeneration, 'generation-v': true}); break;
+            case 72: setPokemonTable({...pokemonTable, sixthgen: response}); setCheckedGeneration({...checkedGeneration, 'generation-vi': true});break;
+            case 86: setPokemonTable({...pokemonTable, seventhgen: response});setCheckedGeneration({...checkedGeneration, 'generation-vii': true}); break;
+        }
+    };
     const setPokemonType = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedType(event.target.value);
     };
     const handleGenerationSelected = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setIsLoading(false);
         switch (event.target.value) {
             case 'generation-i':
                 context.setSelectedGeneration({limit: Generations.first.limit, offset: Generations.first.offset, name: Generations.first.name});
@@ -57,6 +95,24 @@ export const Body: React.FC<{}> = () => {
                 break;
         }
     };
+
+    const tableToReturn = () => {
+        if (context.selectedGeneration.name === 'generation-i') {
+            return pokemonTable.firstgen;
+        } else if (context.selectedGeneration.name === 'generation-ii') {
+            return pokemonTable.secondgen;
+        } else if (context.selectedGeneration.name === 'generation-iii') {
+            return pokemonTable.thirdgen;
+        } else if (context.selectedGeneration.name === 'generation-iv') {
+            return pokemonTable.fourthgen;
+        } else if (context.selectedGeneration.name === 'generation-v') {
+            return pokemonTable.fifthgen;
+        } else if (context.selectedGeneration.name === 'generation-vi') {
+            return pokemonTable.sixthgen;
+        } else if (context.selectedGeneration.name === 'generation-vii') {
+            return pokemonTable.seventhgen;
+        }
+    };
     return (
         <div className="Content">
             <SearchBar/>
@@ -75,7 +131,7 @@ export const Body: React.FC<{}> = () => {
                 </select>
             </div>
             {!isLoading ?
-                <PokemonTable isLoading={isLoading} selectedType={selectedType} pokemonTable={pokemonTable} />
+                <PokemonTable isLoading={isLoading} selectedType={selectedType} pokemonTable={tableToReturn()} />
                 : <div className="pokeball">
                     <div className="pokeball__button"/>
                 </div>

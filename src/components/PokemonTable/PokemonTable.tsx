@@ -5,7 +5,7 @@ import {GenerationsProps} from '../../pages/PokemonDetails/GenericInterfaces';
 
 export interface PokemonTableProps {
     isLoading: boolean;
-    pokemonTable: PokemonTable[];
+    pokemonTable: PokemonTable[] | undefined;
     selectedType: string;
     selectedGeneration?: GenerationsProps;
 }
@@ -62,12 +62,12 @@ export const PokemonTable: React.FC<PokemonTableProps> = ({selectedGeneration,is
                         <div>Type</div>
                     </div>
                     {selectedType &&
-                        pokemonTable.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name || selectedType.toLowerCase() === pokemon.types[1]?.type.name ).map((pokemon: any) => (
+                        pokemonTable?.filter((pokemon:any) => selectedType.toLowerCase() === pokemon.types[0].type.name || selectedType.toLowerCase() === pokemon.types[1]?.type.name ).map((pokemon: any) => (
                             pokemonTableContent(pokemon)
                     ))
                     }
                     {selectedType === 'all' &&
-                        pokemonTable.map(pokemon => pokemonTableContent(pokemon))
+                        pokemonTable?.map(pokemon => pokemonTableContent(pokemon))
                     }
                 </div>
             ) : (

@@ -30,5 +30,8 @@ export default class Client {
     async getPokemonGenerations(){
        return await axios.get('https://pokeapi.co/api/v2/generation').then(response => {return response.data.results;});
     }
+    async getSinglePokemon(id: number){
+       return await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then(response => {return response.data;});
+    }
 
 }

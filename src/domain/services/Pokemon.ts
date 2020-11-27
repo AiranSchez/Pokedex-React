@@ -22,3 +22,8 @@ export const getPokemonByGeneration = async (generation: GenerationsProps): Prom
             types: pokemon.data.types
     }));
 };
+
+export const getPokemonById = async (id: number) : Promise<Pokemon> => {
+    const client = new Client();
+    return await client.getSinglePokemon(id);
+};

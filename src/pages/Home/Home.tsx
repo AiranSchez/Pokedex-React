@@ -1,21 +1,47 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import './styles.scss';
-import {SearchBar} from '../../components/SearchBar';
+import {getPokemonById} from '../../domain/services/Pokemon';
+import {Pokemon} from '../PokemonDetails/GenericInterfaces';
+import {PokemonList} from '../PokemonList/PokemonList';
 
 export const Home: React.FC<{}> = () => {
+    const [pokemon, setPokemon] = useState<Pokemon>({
+        data: {
+            abilities: [],
+            base_experience: 0,
+            forms: [],
+            game_indices: [],
+            height: 0,
+            held_items: [],
+            id: 0,
+            is_default: false,
+            location_area_encounters: '',
+            moves: [],
+            name: 'Venusaur',
+            order: 0,
+            species: {name:'',url:''},
+            sprites: {
+                back_default: '',
+                back_female: '',
+                back_shiny: '',
+                back_shiny_female: '',
+                front_default: '',
+                front_female: '',
+                front_shiny: '',
+                front_shiny_female: ''
+            },
+            stats: [],
+            types: [],
+            weight: 0
+        }
+    });
+    useEffect(() => {
+        getPokemonById(3).then((response) => setPokemon(response));
+    }, []);
     return (
         <div className={'Home'}>
-            <div className={'Introduction'}>
-                <h3>Todo lo que deseas saber sobre los Pokémons y mucho más</h3>
-            </div>
-            <SearchBar/>
-            <div className="Contenido">
-                <h1>¿Quieres saber cómo funciona el mundo de los Pokémon?</h1>
-                <p>Es muy sencillo</p>
-                <h2>Tabla de tipos</h2>
-                <h2>Generaciones</h2>
-                <h2>Pokemons especiales</h2>
-            </div>
+            <PokemonList> </PokemonList>
         </div>
     );
 };

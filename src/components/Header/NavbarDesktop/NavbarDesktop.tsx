@@ -15,28 +15,8 @@ export const NavbarDesktop: React.FC<NavbarDesktopProps> = ({show, onClick}) => 
           </Link>
       </div>
       <div className="NavbarLink">
-          <Link to={ROUTE.ConstructionPage}>
-              Pokemon Games
-          </Link>
-      </div>
-      <div className="NavbarLink">
-          <Link to={ROUTE.ConstructionPage}>
-              Items
-          </Link>
-      </div>
-      <div className="NavbarLink">
           <Link to={ROUTE.PokemonList}>
               Pokemon List
-          </Link>
-      </div>
-      <div className="NavbarLink">
-          <Link to={ROUTE.ConstructionPage}>
-              Moves
-          </Link>
-      </div>
-      <div className="NavbarLink">
-          <Link to={ROUTE.ConstructionPage}>
-              Berries
           </Link>
       </div>
   </div>

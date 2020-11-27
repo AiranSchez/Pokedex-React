@@ -28,7 +28,6 @@ export const Body: React.FC<{}> = () => {
     const [type, setType] = useState<string[]>([]);
     const [selectedType, setSelectedType] = useState<string>('all');
     const [generations, setGenerations] = useState<GenerationsInterface[]>([]);
-    // const [pokemonTable, setPokemonTable] = useState<PokemonTable[]>([]) ;
     const [pokemonTable, setPokemonTable] = useState<PokemonTableVersion2>({firstgen: [], secondgen: [], thirdgen: [], fourthgen: [], fifthgen: [], sixthgen: [], seventhgen: []}) ;
     const [checkedGeneration, setCheckedGeneration] = useState<CheckGeneration>(
         {'generation-i' : false,
@@ -95,7 +94,6 @@ export const Body: React.FC<{}> = () => {
                 break;
         }
     };
-
     const tableToReturn = () => {
         if (context.selectedGeneration.name === 'generation-i') {
             return pokemonTable.firstgen;

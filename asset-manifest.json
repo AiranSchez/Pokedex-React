@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.8343168a.chunk.css",
-    "main.js": "/static/js/main.7b8ef471.chunk.js",
-    "main.js.map": "/static/js/main.7b8ef471.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.536afbf1.js",
-    "runtime-main.js.map": "/static/js/runtime-main.536afbf1.js.map",
-    "static/js/2.7a8f5ca5.chunk.js": "/static/js/2.7a8f5ca5.chunk.js",
-    "static/js/2.7a8f5ca5.chunk.js.map": "/static/js/2.7a8f5ca5.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.70e74a6f22fa2223cb9af79fd1e31e7d.js": "/precache-manifest.70e74a6f22fa2223cb9af79fd1e31e7d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.8343168a.chunk.css.map": "/static/css/main.8343168a.chunk.css.map",
-    "static/js/2.7a8f5ca5.chunk.js.LICENSE.txt": "/static/js/2.7a8f5ca5.chunk.js.LICENSE.txt",
-    "static/media/tenor.gif": "/static/media/tenor.83592060.gif"
+    "main.css": "/Pokedex-React/static/css/main.8343168a.chunk.css",
+    "main.js": "/Pokedex-React/static/js/main.d3c3e799.chunk.js",
+    "main.js.map": "/Pokedex-React/static/js/main.d3c3e799.chunk.js.map",
+    "runtime-main.js": "/Pokedex-React/static/js/runtime-main.41efcb1c.js",
+    "runtime-main.js.map": "/Pokedex-React/static/js/runtime-main.41efcb1c.js.map",
+    "static/js/2.7a8f5ca5.chunk.js": "/Pokedex-React/static/js/2.7a8f5ca5.chunk.js",
+    "static/js/2.7a8f5ca5.chunk.js.map": "/Pokedex-React/static/js/2.7a8f5ca5.chunk.js.map",
+    "index.html": "/Pokedex-React/index.html",
+    "precache-manifest.121e22ac09364811a24d271d81462329.js": "/Pokedex-React/precache-manifest.121e22ac09364811a24d271d81462329.js",
+    "service-worker.js": "/Pokedex-React/service-worker.js",
+    "static/css/main.8343168a.chunk.css.map": "/Pokedex-React/static/css/main.8343168a.chunk.css.map",
+    "static/js/2.7a8f5ca5.chunk.js.LICENSE.txt": "/Pokedex-React/static/js/2.7a8f5ca5.chunk.js.LICENSE.txt",
+    "static/media/tenor.gif": "/Pokedex-React/static/media/tenor.83592060.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.536afbf1.js",
+    "static/js/runtime-main.41efcb1c.js",
     "static/js/2.7a8f5ca5.chunk.js",
     "static/css/main.8343168a.chunk.css",
-    "static/js/main.7b8ef471.chunk.js"
+    "static/js/main.d3c3e799.chunk.js"
   ]
 }

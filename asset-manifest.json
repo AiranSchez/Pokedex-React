@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/pokedex-react/static/css/main.8343168a.chunk.css",
-    "main.js": "/pokedex-react/static/js/main.66c7d3cf.chunk.js",
-    "main.js.map": "/pokedex-react/static/js/main.66c7d3cf.chunk.js.map",
-    "runtime-main.js": "/pokedex-react/static/js/runtime-main.971f92cb.js",
-    "runtime-main.js.map": "/pokedex-react/static/js/runtime-main.971f92cb.js.map",
-    "static/js/2.7a8f5ca5.chunk.js": "/pokedex-react/static/js/2.7a8f5ca5.chunk.js",
-    "static/js/2.7a8f5ca5.chunk.js.map": "/pokedex-react/static/js/2.7a8f5ca5.chunk.js.map",
-    "index.html": "/pokedex-react/index.html",
-    "precache-manifest.2b47a7da203d6ce926c4259a4b575199.js": "/pokedex-react/precache-manifest.2b47a7da203d6ce926c4259a4b575199.js",
-    "service-worker.js": "/pokedex-react/service-worker.js",
-    "static/css/main.8343168a.chunk.css.map": "/pokedex-react/static/css/main.8343168a.chunk.css.map",
-    "static/js/2.7a8f5ca5.chunk.js.LICENSE.txt": "/pokedex-react/static/js/2.7a8f5ca5.chunk.js.LICENSE.txt",
-    "static/media/tenor.gif": "/pokedex-react/static/media/tenor.83592060.gif"
+    "main.css": "/Pokedex-React/static/css/main.8343168a.chunk.css",
+    "main.js": "/Pokedex-React/static/js/main.d3c3e799.chunk.js",
+    "main.js.map": "/Pokedex-React/static/js/main.d3c3e799.chunk.js.map",
+    "runtime-main.js": "/Pokedex-React/static/js/runtime-main.41efcb1c.js",
+    "runtime-main.js.map": "/Pokedex-React/static/js/runtime-main.41efcb1c.js.map",
+    "static/js/2.7a8f5ca5.chunk.js": "/Pokedex-React/static/js/2.7a8f5ca5.chunk.js",
+    "static/js/2.7a8f5ca5.chunk.js.map": "/Pokedex-React/static/js/2.7a8f5ca5.chunk.js.map",
+    "index.html": "/Pokedex-React/index.html",
+    "precache-manifest.121e22ac09364811a24d271d81462329.js": "/Pokedex-React/precache-manifest.121e22ac09364811a24d271d81462329.js",
+    "service-worker.js": "/Pokedex-React/service-worker.js",
+    "static/css/main.8343168a.chunk.css.map": "/Pokedex-React/static/css/main.8343168a.chunk.css.map",
+    "static/js/2.7a8f5ca5.chunk.js.LICENSE.txt": "/Pokedex-React/static/js/2.7a8f5ca5.chunk.js.LICENSE.txt",
+    "static/media/tenor.gif": "/Pokedex-React/static/media/tenor.83592060.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.971f92cb.js",
+    "static/js/runtime-main.41efcb1c.js",
     "static/js/2.7a8f5ca5.chunk.js",
     "static/css/main.8343168a.chunk.css",
-    "static/js/main.66c7d3cf.chunk.js"
+    "static/js/main.d3c3e799.chunk.js"
   ]
 }

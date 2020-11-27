@@ -1,1 +1,0 @@
-export { ContentDetail } from './ContentDetail';

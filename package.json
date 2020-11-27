@@ -1,5 +1,5 @@
 {
-  "homepage": "https://airanschez.github.io/pokedex-react/",
+  "homepage": "https://airanschez.github.io/Pokedex-React/",
   "name": "pokedex-react",
   "version": "0.1.0",
   "private": true,
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build --public-url /pokedex-react/ -d build",
+    "build": "react-scripts build --public-url /Pokedex-React/ -d build",
     "test": "react-scripts test",
     "deploy": "gh-pages -d build",
     "test:e2e": "npm run cy:open --prefix ./e2e",
